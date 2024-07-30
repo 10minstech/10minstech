@@ -4,7 +4,77 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>10minstech - Instagram Profile</title>
-    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 1rem;
+        }
+        .logo {
+            max-width: 100px;
+            height: auto;
+        }
+        nav {
+            background-color: #444;
+            padding: 0.5rem;
+        }
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+        nav ul li {
+            margin: 0 10px;
+        }
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+        }
+        main {
+            padding: 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .button {
+            display: inline-block;
+            background-color: #0095f6;
+            color: #fff;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 1rem;
+        }
+        #instagram-feed {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        .instagram-post {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            padding: 1rem;
+            border-radius: 5px;
+        }
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 1rem;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -38,6 +108,23 @@
         <p>&copy; 2024 10minstech. All rights reserved.</p>
     </footer>
 
-    <script src="../js/main.js"></script>
+    <script>
+        function loadInstagramPosts() {
+            const feed = document.getElementById('instagram-feed');
+            const postCount = 6;
+            
+            for (let i = 0; i < postCount; i++) {
+                const post = document.createElement('div');
+                post.className = 'instagram-post';
+                post.innerHTML = `
+                    <h3>Instagram Post ${i + 1}</h3>
+                    <p>This is a simulated Instagram post. In a real application, this would be populated with actual content from the Instagram API.</p>
+                `;
+                feed.appendChild(post);
+            }
+        }
+
+        window.onload = loadInstagramPosts;
+    </script>
 </body>
 </html>

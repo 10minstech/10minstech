@@ -5,9 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>10minstech - YouTube Channel</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
     <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/youtube.css">
 </head>
 <body>
+    <div class="loader">
+        <div class="loader-content">
+            <img src="../images/logo-animated.svg" alt="10minstech Loader" class="loader-logo">
+            <p class="loader-text">Loading amazing content...</p>
+        </div>
+    </div>
+
     <header class="header">
         <div class="container">
             <nav class="navbar">
@@ -20,7 +29,7 @@
                 </button>
                 <ul class="nav-list">
                     <li class="nav-item"><a href="../index.html" class="nav-link">ပင်မစာမျက်နှာ</a></li>
-                    <li class="nav-item"><a href="youtube.html" class="nav-link">YouTube</a></li>
+                    <li class="nav-item"><a href="youtube.html" class="nav-link active">YouTube</a></li>
                     <li class="nav-item"><a href="facebook.html" class="nav-link">Facebook</a></li>
                     <li class="nav-item"><a href="instagram.html" class="nav-link">Instagram</a></li>
                 </ul>
@@ -29,29 +38,34 @@
     </header>
 
     <main class="main">
-        <section class="hero youtube-hero">
+        <section class="hero youtube-hero parallax-bg">
             <div class="container">
-                <h1 class="hero-title">10minstech YouTube Channel</h1>
-                <p class="hero-subtitle">နည်းပညာဆိုင်ရာ ဗီဒီယိုများကို မြန်မာဘာသာဖြင့် လေ့လာကြည့်ရှုနိုင်ပါပြီ</p>
-                <a href="https://www.youtube.com/channel/UCxxxxxxxx" target="_blank" class="btn btn-primary">YouTube Channel သို့ သွားရန်</a>
+                <h1 class="hero-title" data-aos="fade-up">10minstech YouTube Channel</h1>
+                <p class="hero-subtitle" data-aos="fade-up" data-aos-delay="200">နည်းပညာဆိုင်ရာ ဗီဒီယိုများကို မြန်မာဘာသာဖြင့် လေ့လာကြည့်ရှုနိုင်ပါပြီ</p>
+                <a href="https://www.youtube.com/channel/UCxxxxxxxx" target="_blank" class="btn btn-primary btn-lg" data-aos="fade-up" data-aos-delay="400">YouTube Channel သို့ သွားရန်</a>
+            </div>
+            <div class="hero-bg-video">
+                <video autoplay loop muted playsinline>
+                    <source src="../videos/hero-bg.mp4" type="video/mp4">
+                </video>
             </div>
         </section>
 
         <section id="youtube-stats" class="section">
             <div class="container">
-                <h2 class="section-title">ကျွန်ုပ်တို့၏ YouTube Channel အချက်အလက်များ</h2>
+                <h2 class="section-title" data-aos="fade-up">ကျွန်ုပ်တို့၏ YouTube Channel အချက်အလက်များ</h2>
                 <div class="stats-container">
-                    <div class="stat-item">
+                    <div class="stat-item" data-aos="zoom-in" data-aos-delay="200">
                         <i class="fas fa-users stat-icon"></i>
                         <span class="counter" data-target="10000">0</span>
                         <p>Subscribers</p>
                     </div>
-                    <div class="stat-item">
+                    <div class="stat-item" data-aos="zoom-in" data-aos-delay="400">
                         <i class="fas fa-video stat-icon"></i>
                         <span class="counter" data-target="100">0</span>
                         <p>Videos</p>
                     </div>
-                    <div class="stat-item">
+                    <div class="stat-item" data-aos="zoom-in" data-aos-delay="600">
                         <i class="fas fa-eye stat-icon"></i>
                         <span class="counter" data-target="1000000">0</span>
                         <p>Total Views</p>
@@ -60,18 +74,40 @@
             </div>
         </section>
 
+        <section id="featured-video" class="section">
+            <div class="container">
+                <h2 class="section-title" data-aos="fade-up">အထူးဗီဒီယို</h2>
+                <div class="featured-video-container" data-aos="fade-up" data-aos-delay="200">
+                    <div class="video-wrapper">
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/VIDEO_ID" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                    </div>
+                    <div class="video-info">
+                        <h3 class="video-title">နည်းပညာဆိုင်ရာ အထူးဗီဒီယို</h3>
+                        <p class="video-description">ဤဗီဒီယိုတွင် နည်းပညာဆိုင်ရာ အကြောင်းအရာများကို အသေးစိတ် ဆွေးနွေးထားပါသည်။</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <section id="latest-videos" class="section">
             <div class="container">
-                <h2 class="section-title">နောက်ဆုံးထွက် ဗီဒီယိုများ</h2>
-                <div id="video-feed" class="content-grid"></div>
-                <button id="loadMore" class="btn btn-secondary">နောက်ထပ်ကြည့်ရှုရန်</button>
+                <h2 class="section-title" data-aos="fade-up">နောက်ဆုံးထွက် ဗီဒီယိုများ</h2>
+                <div class="swiper-container" data-aos="fade-up" data-aos-delay="200">
+                    <div class="swiper-wrapper" id="video-feed">
+                        <!-- Swiper slides will be dynamically added here -->
+                    </div>
+                    <div class="swiper-pagination"></div>
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                </div>
+                <button id="loadMore" class="btn btn-secondary btn-lg">နောက်ထပ်ကြည့်ရှုရန်</button>
             </div>
         </section>
 
         <section id="search-videos" class="section">
             <div class="container">
-                <h2 class="section-title">ဗီဒီယိုရှာဖွေရန်</h2>
-                <form id="searchForm" class="search-form">
+                <h2 class="section-title" data-aos="fade-up">ဗီဒီယိုရှာဖွေရန်</h2>
+                <form id="searchForm" class="search-form" data-aos="fade-up" data-aos-delay="200">
                     <input type="text" id="searchInput" placeholder="ဗီဒီယိုခေါင်းစဉ် သို့မဟုတ် အကြောင်းအရာ ရိုက်ထည့်ပါ" required>
                     <button type="submit" class="btn btn-primary">ရှာဖွေရန်</button>
                 </form>
@@ -79,13 +115,45 @@
             </div>
         </section>
 
-        <section id="newsletter" class="section">
+        <section id="categories" class="section">
             <div class="container">
-                <h2 class="section-title">သတင်းလွှာ</h2>
-                <p>နောက်ဆုံးရ ဗီဒီယိုများနှင့် သတင်းအချက်အလက်များကို ရယူလိုပါက စာရင်းသွင်းပါ။</p>
-                <form id="newsletterForm" class="newsletter-form">
+                <h2 class="section-title" data-aos="fade-up">ဗီဒီယိုအမျိုးအစားများ</h2>
+                <div class="categories-grid" data-aos="fade-up" data-aos-delay="200">
+                    <a href="#" class="category-item">
+                        <i class="fas fa-laptop-code"></i>
+                        <span>Programming</span>
+                    </a>
+                    <a href="#" class="category-item">
+                        <i class="fas fa-mobile-alt"></i>
+                        <span>Mobile Development</span>
+                    </a>
+                    <a href="#" class="category-item">
+                        <i class="fas fa-server"></i>
+                        <span>Web Development</span>
+                    </a>
+                    <a href="#" class="category-item">
+                        <i class="fas fa-database"></i>
+                        <span>Database</span>
+                    </a>
+                    <a href="#" class="category-item">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>Cybersecurity</span>
+                    </a>
+                    <a href="#" class="category-item">
+                        <i class="fas fa-robot"></i>
+                        <span>Artificial Intelligence</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section id="newsletter" class="section parallax-bg">
+            <div class="container">
+                <h2 class="section-title" data-aos="fade-up">သတင်းလွှာ</h2>
+                <p data-aos="fade-up" data-aos-delay="200">နောက်ဆုံးရ ဗီဒီယိုများနှင့် သတင်းအချက်အလက်များကို ရယူလိုပါက စာရင်းသွင်းပါ။</p>
+                <form id="newsletterForm" class="newsletter-form" data-aos="fade-up" data-aos-delay="400">
                     <input type="email" id="newsletterEmail" placeholder="သင့်အီးမေးလ်လိပ်စာ" required>
-                    <button type="submit" class="btn btn-primary">စာရင်းသွင်းမည်</button>
+                    <button type="submit" class="btn btn-primary btn-lg">စာရင်းသွင်းမည်</button>
                 </form>
             </div>
         </section>
@@ -120,6 +188,9 @@
         <i class="fas fa-moon"></i>
     </button>
 
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script src="../js/main.js"></script>
+    <script src="../js/youtube.js"></script>
 </body>
 </html>

@@ -1,0 +1,102 @@
+/* facebook.css */
+
+.facebook-hero {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    background-image: url('../images/facebook-hero-bg.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+.facebook-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.stats-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.stat-item {
+    text-align: center;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+    transition: transform 0.3s ease;
+}
+
+.stat-item:hover {
+    transform: translateY(-10px);
+}
+
+.stat-icon {
+    font-size: 3rem;
+    margin-bottom: 10px;
+    color: var(--primary-color);
+}
+
+.counter {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.featured-post-container {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.post-image {
+    flex: 1;
+}
+
+.post-image img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.post-info {
+    flex: 1;
+}
+
+.topics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.topic-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+    transition: transform 0.3s ease;
+    text-decoration: none;
+    color: inherit;
+}
+
+.topic-item:hover {
+    transform: translateY(-5px);
+}
+
+.topic-item i {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    color: var(--primary-color);
+}
+
+/* Add more styles as needed */
