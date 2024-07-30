@@ -3,59 +3,370 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>10minstech - Burmese Tech Education</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="css/style.css">
+    <title>၁၀မိနစ်-နည်းပညာ - နည်းပညာအတွက် သင့်ရဲ့ အလင်းရောင်</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #4A90E2;
+            --secondary-color: #50E3C2;
+            --accent-color: #F5A623;
+            --text-color: #333333;
+            --bg-color: #F8F8F8;
+            --white: #FFFFFF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Padauk', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Header Styles */
+        .header {
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .logo-img {
+            width: 40px;
+            margin-right: 0.5rem;
+        }
+
+        .nav-list {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-item {
+            margin-left: 2rem;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--primary-color);
+        }
+
+        /* Hero Section Styles */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: var(--white);
+            padding: 8rem 0 4rem;
+            text-align: center;
+        }
+
+        .hero-title {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease 0.2s;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background-color: var(--accent-color);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background-color: #E09400;
+            transform: translateY(-3px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Features Section Styles */
+        .section {
+            padding: 4rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--primary-color);
+        }
+
+        .features {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .feature {
+            flex-basis: calc(33.333% - 2rem);
+            background-color: var(--white);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .feature:hover {
+            transform: translateY(-10px);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+        }
+
+        .feature-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        /* Content Feed Styles */
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .content-item {
+            background-color: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .content-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .content-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .content-info {
+            padding: 1.5rem;
+        }
+
+        .content-title {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+
+        .content-description {
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .content-link {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background-color: var(--secondary-color);
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .content-link:hover {
+            background-color: #3CC7A8;
+        }
+
+        /* Footer Styles */
+        .footer {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 3rem 0;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .footer-logo-img {
+            width: 30px;
+            margin-right: 0.5rem;
+        }
+
+        .footer-links {
+            list-style: none;
+            display: flex;
+        }
+
+        .footer-links li {
+            margin-right: 1.5rem;
+        }
+
+        .footer-links a {
+            color: var(--white);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-color);
+        }
+
+        .social-links {
+            display: flex;
+        }
+
+        .social-link {
+            color: var(--white);
+            font-size: 1.5rem;
+            margin-left: 1rem;
+            transition: color 0.3s ease;
+        }
+
+        .social-link:hover {
+            color: var(--accent-color);
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 2rem;
+            font-size: 0.9rem;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-list {
+                display: none;
+            }
+
+            .feature {
+                flex-basis: 100%;
+                margin-bottom: 2rem;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .footer-links, .social-links {
+                margin-top: 1rem;
+            }
+        }
+    </style>
 </head>
 <body>
     <header class="header">
         <div class="container">
             <nav class="navbar">
-                <a href="index.html" class="logo">
-                    <img src="images/logo.png" alt="10minstech Logo" class="logo-img">
-                    <span class="logo-text">10minstech</span>
+                <a href="#" class="logo">
+                    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCIgdmlld0JveD0iMCAwIDQwIDQwIj48Y2lyY2xlIGN4PSIyMCIgY3k9IjIwIiByPSIyMCIgZmlsbD0iIzRBOTBFMiIvPjxwYXRoIGQ9Ik0xMCAxOGwyMCA1LTEwIDctMTAtMTJ6IiBmaWxsPSIjRkZGIi8+PC9zdmc+" alt="၁၀မိနစ်-နည်းပညာ Logo" class="logo-img">
+                    <span class="logo-text">၁၀မိနစ်-နည်းပညာ</span>
                 </a>
-                <button class="nav-toggle" aria-label="toggle navigation">
-                    <span class="hamburger"></span>
-                </button>
                 <ul class="nav-list">
-                    <li class="nav-item"><a href="index.html" class="nav-link">ပင်မစာမျက်နှာ</a></li>
-                    <li class="nav-item"><a href="pages/youtube.html" class="nav-link">YouTube</a></li>
-                    <li class="nav-item"><a href="pages/facebook.html" class="nav-link">Facebook</a></li>
-                    <li class="nav-item"><a href="pages/instagram.html" class="nav-link">Instagram</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link">ပင်မစာမျက်နှာ</a></li>
+                    <li class="nav-item"><a href="#about" class="nav-link">ကျွန်ုပ်တို့အကြောင်း</a></li>
+                    <li class="nav-item"><a href="#latest-content" class="nav-link">သင်ခန်းစာများ</a></li>
+                    <li class="nav-item"><a href="#contact" class="nav-link">ဆက်သွယ်ရန်</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <main class="main">
+    <main>
         <section class="hero">
             <div class="container">
-                <h1 class="hero-title">နည်းပညာဆိုင်ရာ အသိပညာများကို မြန်မာဘာသာဖြင့် ဝေမျှခြင်း</h1>
-                <p class="hero-subtitle">အခုပဲ စတင်လေ့လာလိုက်ပါ</p>
-                <a href="#latest-content" class="btn btn-primary">စတင်ကြည့်ရှုရန်</a>
+                <h1 class="hero-title">နည်းပညာကမ္ဘာသို့ လမ်းပြပေးမယ့် ၁၀မိနစ်-နည်းပညာ</h1>
+                <p class="hero-subtitle">အိပ်မက်တွေကို အကောင်အထည်ဖော်ဖို့ နည်းပညာနဲ့အတူ လက်တွဲလှမ်းချီကြစို့</p>
+                <a href="#latest-content" class="btn btn-primary">စတင်လေ့လာမယ်</a>
             </div>
         </section>
 
         <section id="about" class="section">
             <div class="container">
-                <h2 class="section-title">ကျွန်ုပ်တို့အကြောင်း</h2>
-                <p class="section-text">10minstech သည် နည်းပညာဆိုင်ရာ အကြောင်းအရာများကို ရိုးရှင်းလွယ်ကူစွာ နားလည်နိုင်အောင် မြန်မာဘာသာဖြင့် ရှင်းလင်းတင်ဆက်ပေးနေပါသည်။</p>
+                <h2 class="section-title">ကျွန်ုပ်တို့၏ ရည်ရွယ်ချက်</h2>
                 <div class="features">
                     <div class="feature">
-                        <i class="fas fa-video feature-icon"></i>
-                        <h3 class="feature-title">ဗီဒီယိုသင်ခန်းစာများ</h3>
-                        <p class="feature-text">လွယ်ကူရှင်းလင်းသော ဗီဒီယိုများဖြင့် သင်ယူလေ့လာနိုင်ပါသည်။</p>
+                        <i class="fas fa-rocket feature-icon"></i>
+                        <h3 class="feature-title">နည်းပညာကို လက်လှမ်းမီစေခြင်း</h3>
+                        <p class="feature-text">ရှုပ်ထွေးနက်နဲတဲ့ နည်းပညာအကြောင်းအရာတွေကို ရိုးရှင်းလွယ်ကူအောင် ရှင်းပြပေးပါတယ်။</p>
                     </div>
                     <div class="feature">
                         <i class="fas fa-users feature-icon"></i>
-                        <h3 class="feature-title">လူမှုကွန်ရက်ပေါ်မှ သင်ကြားမှု</h3>
-                        <p class="feature-text">Facebook နှင့် Instagram တို့မှတဆင့် အသိပညာများကို မျှဝေပေးနေပါသည်။</p>
+                        <h3 class="feature-title">အသိုင်းအဝိုင်းတည်ဆောက်ခြင်း</h3>
+                        <p class="feature-text">နည်းပညာဝါသနာရှင်တွေ စုစည်းပြီး အတူတကွ သင်ယူလေ့လာနိုင်အောင် ပံ့ပိုးပေးပါတယ်။</p>
                     </div>
                     <div class="feature">
-                        <i class="fas fa-language feature-icon"></i>
-                        <h3 class="feature-title">မြန်မာဘာသာဖြင့် သင်ကြားမှု</h3>
-                        <p class="feature-text">မြန်မာဘာသာဖြင့် ရှင်းလင်းတင်ဆက်ထားသောကြောင့် လွယ်ကူစွာ နားလည်နိုင်ပါသည်။</p>
+                        <i class="fas fa-lightbulb feature-icon"></i>
+                        <h3 class="feature-title">တီထွင်ဖန်တီးမှုကို အားပေးခြင်း</h3>
+                        <p class="feature-text">သင်ယူထားတဲ့ အသိပညာတွေကို လက်တွေ့အသုံးချနိုင်အောင် လမ်းညွှန်ပေးပါတယ်။</p>
                     </div>
                 </div>
             </div>
@@ -63,9 +374,11 @@
 
         <section id="latest-content" class="section">
             <div class="container">
-                <h2 class="section-title">နောက်ဆုံးရ အကြောင်းအရာများ</h2>
-                <div id="content-feed" class="content-grid"></div>
-                <button id="load-more" class="btn btn-secondary">နောက်ထပ်ကြည့်ရှုရန်</button>
+                <h2 class="section-title">နောက်ဆုံးရ သင်ခန်းစာများ</h2>
+                <div id="content-feed" class="content-grid">
+                    <!-- Content items will be dynamically added here -->
+                </div>
+                <button id="load-more" class="btn btn-primary">နောက်ထပ်ကြည့်ရှုရန်</button>
             </div>
         </section>
     </main>
@@ -74,24 +387,83 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-logo">
-                    <img src="images/logo.png" alt="10minstech Logo" class="footer-logo-img">
-                    <span class="footer-logo-text">10minstech</span>
+                    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCIgdmlld0JveD0iMCAwIDQwIDQwIj48Y2lyY2xlIGN4PSIyMCIgY3k9IjIwIiByPSIyMCIgZmlsbD0iI0ZGRiIvPjxwYXRoIGQ9Ik0xMCAxOGwyMCA1LTEwIDctMTAtMTJ6IiBmaWxsPSIjNEE5MEUyIi8+" alt="၁၀မိနစ်-နည်းပညာ Logo" class="footer-logo-img">
+                    <span>၁၀မိနစ်-နည်းပညာ Myanmar</span>
                 </div>
                 <ul class="footer-links">
-                    <li><a href="#">ကျွန်ုပ်တို့အကြောင်း</a></li>
-                    <li><a href="#">ဆက်သွယ်ရန်</a></li>
-                    <li><a href="#">မူဝါဒ</a></li>
+                    <li><a href="#">ပင်မစာမျက်နှာ</a></li>
+                    <li><a href="#about">ကျွန်ုပ်တို့အကြောင်း</a></li>
+                    <li><a href="#latest-content">သင်ခန်းစာများ</a></li>
+                    <li><a href="#contact">ဆက်သွယ်ရန်</a></li>
                 </ul>
                 <div class="social-links">
-                    <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
                     <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
                 </div>
             </div>
-            <p class="copyright">&copy; 2024 10minstech. All rights reserved.</p>
+            <div class="copyright">
+                <p>&copy; 2024 TechSpark Myanmar. မူပိုင်ခွင့်အားလုံး ထိန်းသိမ်းပြီးဖြစ်သည်။</p>
+            </div>
         </div>
     </footer>
 
-    <script src="js/main.js"></script>
+    <script>
+        // Sample content data (you would typically fetch this from a server)
+        const contentData = [
+            {
+                title: "Python အခြေခံ - အပိုင်း (၁)",
+                description: "Python ပရိုဂရမ်မင်းဘာသာစကား၏ အခြေခံအကြောင်းအရာများကို လေ့လာကြမယ်။",
+                image: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMjAwIiB2aWV3Qm94PSIwIDAgMzAwIDIwMCI+PHJlY3Qgd2lkdGg9IjMwMCIgaGVpZ2h0PSIyMDAiIGZpbGw9IiMzNzc2QUIiLz48cGF0aCBkPSJNNjAgODBsOTAgNDAtOTAgNDB2LTgweiIgZmlsbD0iI0ZGRDQzQiIvPjxjaXJjbGUgY3g9IjE5MCIgY3k9IjEwMCIgcj0iMzAiIGZpbGw9IiNGRkQ0M0IiLz48L3N2Zz4=",
+                link: "#"
+            },
+            {
+                title: "ဝဘ်ဆိုဒ်တည်ဆောက်ခြင်း - HTML နှင့် CSS",
+                description: "HTML နှင့် CSS အသုံးပြု၍ ရိုးရှင်းသော ဝဘ်ဆိုဒ်တစ်ခု မည်သို့တည်ဆောက်ရမည်ကို လေ့လာကြမယ်။",
+                image: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMjAwIiB2aWV3Qm94PSIwIDAgMzAwIDIwMCI+PHJlY3Qgd2lkdGg9IjMwMCIgaGVpZ2h0PSIyMDAiIGZpbGw9IiNFNDREMjYiLz48dGV4dCB4PSI1MCIgeT0iMTIwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iNjAiIGZpbGw9IiNGRkYiPkhUTUw8L3RleHQ+PHRleHQgeD0iMTgwIiB5PSIxMjAiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSI2MCIgZmlsbD0iIzFFOTBGRiI+Q1NTPC90ZXh0Pjwvc3ZnPg==",
+                link: "#"
+            },
+            {
+                title: "JavaScript မိတ်ဆက်",
+                description: "JavaScript ဘာသာစကား၏ အခြေခံအကြောင်းအရာများနှင့် ဝဘ်ဆိုဒ်များတွင် အသုံးပြုပုံကို လေ့လာကြမယ်။",
+                image: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMjAwIiB2aWV3Qm94PSIwIDAgMzAwIDIwMCI+PHJlY3Qgd2lkdGg9IjMwMCIgaGVpZ2h0PSIyMDAiIGZpbGw9IiNGN0RGMUUiLz48dGV4dCB4PSIzMCIgeT0iMTIwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iNDAiIGZpbGw9IiMzMjMyMzIiPkphdmFTY3JpcHQ8L3RleHQ+PC9zdmc+",
+                link: "#"
+            },
+        ];
+
+        const contentFeed = document.getElementById('content-feed');
+        const loadMoreButton = document.getElementById('load-more');
+        let currentIndex = 0;
+
+        function createContentItem(item) {
+            const contentItem = document.createElement('div');
+            contentItem.className = 'content-item';
+            contentItem.innerHTML = `
+                <img src="${item.image}" alt="${item.title}" class="content-img">
+                <div class="content-info">
+                    <h3 class="content-title">${item.title}</h3>
+                    <p class="content-description">${item.description}</p>
+                    <a href="${item.link}" class="content-link">ဆက်လက်ဖတ်ရှုရန်</a>
+                </div>
+            `;
+            return contentItem;
+        }
+
+        function loadMoreContent() {
+            for (let i = 0; i < 3 && currentIndex < contentData.length; i++) {
+                contentFeed.appendChild(createContentItem(contentData[currentIndex]));
+                currentIndex++;
+            }
+            if (currentIndex >= contentData.length) {
+                loadMoreButton.style.display = 'none';
+            }
+        }
+
+        loadMoreButton.addEventListener('click', loadMoreContent);
+
+        // Initial load
+        loadMoreContent();
+    </script>
 </body>
 </html>
